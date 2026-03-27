@@ -4,7 +4,7 @@ from app import database
 
 router = APIRouter()
 
-#create order and store in memory
+#create product and store in memory
 @router.post("/", response_model=ProductResponse)
 def create_product(product: ProductCreate):
     new_product = {
