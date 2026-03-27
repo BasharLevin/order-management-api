@@ -4,7 +4,7 @@ from app import database
 
 router = APIRouter()
 
-
+#create order and store in memory
 @router.post("/", response_model=ProductResponse)
 def create_product(product: ProductCreate):
     new_product = {
@@ -19,12 +19,12 @@ def create_product(product: ProductCreate):
 
     return new_product
 
-
+# retrieve all products
 @router.get("/", response_model=list[ProductResponse])
 def get_products():
     return list(database.products.values())
 
-
+# retrieve product by id 
 @router.get("/{product_id}", response_model=ProductResponse)
 def get_product(product_id: int):
     product = database.products.get(product_id)
